@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Suave Pseudo-Interpreter Help</title>
+	<style>
+		* {
+			background-color: #eeeeee;
+		}
+		body {
+			font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+			padding: 2em;
+			margin: 0;
+		}
+		h1 {
+			margin:0 0 -0.5em 0;
+		}
+		table td {
+			padding: 0;
+			margin: 0;
+		}
+		.pink {
+			color: #b37b7b;
+		}
+		.red {
+			color: #bf0000;
+		}
+		.blue {
+			color: #0400bf;
+		}
+		.magenta {
+			color: #bf00bf;
+		}
+		.pink, .red, .blue, .magenta {
+			font-weight: bold;
+		}
+		.pseudocode{
+			font-style: italic;
+			font-family: monospace;
+		}
+	</style>
+</head>
+<body>
+	<h1>HOW TO USE</h1>
+	<ol>
+		<li>From the <strong>File</strong> menu, click <strong>Open</strong> and select your program from the dialog.</li>
+		<li>Select whether or not your program uses labels in symbols (if you're not sure, select <strong>No</strong>).</li>
+		<li>If your program encounters an error while loading, the loading process will halt and an error message will display in the <strong>Output</strong> panel. Once you have fixed any errors with your program, go to <strong>File</strong> and <strong>Refresh</strong> (or hit <em>F4</em>) to reload the program without needing to go through the open file dialog again.</li>
+		<li>Once your program successfully loads, go to the <strong>Interpreter</strong> menu and choose <strong>Run</strong> (<em>F5</em>) to run the program from start to finish. When finished, you will see the results of your print statements in the <strong>Output</strong> panel. Your program will halt if any errors occur.</li>
+		<li>If your program runs to completion or halts from an error, it will need to be <strong>Reset</strong> (<em>F7</em>, or under the <strong>Interpreter</strong> menu) before it can be run again. Resetting will restore your program to its post-initialized state (but doesn't re-read it from the file -- Remember to use <strong>Refresh</strong> (<em>F4</em>) to re-load your program from the file)</li>
+		<li>There are two run options for debugging:
+			<ol>
+				<li>From the <strong>Interpreter</strong> menu, select the <strong>Run with Debugging</strong> (<em>Shift + F5</em>) option to run the program while outputting debug statements for every step.</li>
+				<li>From the <strong>Interpreter</strong> menu, select the <strong>Step</strong> (<em>F6</em>) option to step forward in the program while outputting debug statements.</li>
+			</ol>
+		</li>
+		<li>You can set up <strong>breakpoints</strong> by clicking any line of your program in the <strong>Program</strong> table. Once a breakpoint is set, the line will be highlighted in <span class="pink">pink</span> and you can <strong>Run</strong> (<em>F5</em>) or <strong>Run with Debugging</strong> (<em>Shift + F5</em>) to run the program until it reaches the breakpoint. The program will halt <strong>before</strong> it executes the breakpoint line. To clear a breakpoint, click it again.</li>
+	</ol>
+
+	<h1>UNDERSTANDING THE READOUTS</h1>
+	<p>You can see the <strong>Data</strong>, <strong>Program</strong>, and <strong>Input</strong> tables at the top of the program, below the main menu. These display the absolute memory locations/values, program instructions, and input cards, respectively. Note that only initialized data locations are shown in the <strong>Data</strong> area, so if you've never assigned a value to a memory location, it won't be shown in the table.</p>
+	<p>Lower down are the <strong>Data Symbols</strong> and <strong>Program Labels</strong> tables. When a program with labels/symbols is loaded, the Data Symbols table will display the relative mappings of data symbols to absolute memory locations and the Program Labels table will display the relative mappings of program labels to absolute program lines.</p>
+	<p>When stepping through the program, the Program table will color the next line to be run in <span class="blue">blue</span> (that is, where the instruction pointer is pointing to). The current instruction being run is colored <span class="red">red</span>.</p>
+	<p>Data rows will be colored <span class="red">red</span> when they are written to, and Input rows will be colored <span class="blue">blue</span> when they are being read from.</p>
+	<p>Data Symbols will be colored <span class="red">red</span> when they are being written to, <span class="blue">blue</span> when they are being read, and <span class="magenta">magenta</span> when they are being both written to <strong>and</strong> read within the same statement.</p>
+	<p>Program Labels are colored <span class="blue">blue</span> when a goto operation occurs, such as at the end of an increment &amp; test operation.</p>
+
+	<h1>IMPORTING AND EXPORTING</h1>
+	<p>You may find that you need fully-commented .txt file as well as your clean program in .dat format.</p>
+	<p>The Suave Pseudo-Interpreter will ignore commented-out lines (lines that are empty or start with a semicolon ; ) and can read instructions that are in a separated format like <span class="pseudocode">+0 000 000 000</span>. When you open your program with <strong>File</strong> and <strong>Open</strong>, the program's instructions are automatically parsed into a clean 11-character format without any spaces or comments.</p>
+	<p>To export the cleaned-up program, go to the <strong>File</strong> menu and select <strong>Export</strong>. You will be prompted to save in .dat or .txt format. The exported file should work perfectly in official pseudocode interpreters, without you needing to manually remove comments or spaces from your program file!</p>
+
+	<p>
+		<strong>Example Input:</strong><br>
+		<span class="pseudocode">
+			+0 000 000 000<br>
+			+0 000 000 001<br>
+			+9 999 999 999 ; 2 - temp0, 3 - temp1, 4 - temp2, 5 - i, 6 - j, 7 - k, 8 - N, 100-199 - ID array, 200-299 - score array<br>
+			+0 000 000 005 ; move 0 into i(5)<br>
+			+8 000 000 008 ; read first card into N<br>
+			+8 000 000 002 ; .cardloop, read first card into temp0(2)<br>
+			-6 002 100 005 ; move temp0(2) into 100[i(5)]<br>
+			+8 000 000 002 ; read second card into temp0(2)<br>
+			-6 002 200 005 ; move temp0(2) into 200[i(5)]<br>
+			+7 005 008 002 ; i(5)++: while (i(5) &lt; N(8)) goto .cardloop
+		</span>
+	</p>
+
+	<p>
+		<strong>Example Output:</strong><br>
+		<span class="pseudocode">
+			+0000000000<br>
+			+0000000001<br>
+			+9999999999<br>
+			+0000000005<br>
+			+8000000008<br>
+			+8000000002<br>
+			-6002100005<br>
+			+8000000002<br>
+			-6002200005<br>
+			+7005008002
+		</span>
+	</p>
+
+	<h1>USING IN THE COMMAND LINE</h1>
+	<p>The Suave Pseudo-Interpreter can be run from the command line with the following command:</p>
+	<p>java -jar SuavePI.jar</p>
+	<p>Additionally, SuavePI supports debugging and exporting through the command line:</p>
+	<p><strong>SuavePI -i "infile.txt" [-o "outfile.dat"] [-l] [-d] [-b #line]</strong></p>
+	<table>
+		<tr><td style="width: 120px;">-i "infile.txt"</td>
+			<td>File to be opened by the interpreter.</td></tr>
+       <tr><td>-o "outfile.dat"</td>
+			<td>Rather than opening the interpreter, clean and output the parsed file.</td></tr>
+       <tr><td>-l</td>
+			<td>Input file uses symbols/labels (default: no).</td></tr>
+       <tr><td>-d</td>
+			<td>Open the interpreter in debug mode.</td></tr>
+       <tr><td>-b #line</td>
+			<td>Break on specified line number.</td></tr>
+   </table>
+   <p>In order to perform step-by-step debugging, you must set an initial breakpoint (see <em>-b #line</em>, above). After breaking, the command line debugger can perform the following actions (with the necessary input in parenthesis):</p>
+   <ul>
+   	<li><b>Step</b> (<em>empty</em>): Press Enter/Return with no input to progress another step in the program.</li>
+   	<li><b>Continue</b> (<b>c</b>): Resume the program without debugging until the end of the program or another breakpoint is hit.</li>
+   	<li><b>Continue with Debugging</b> (<b>d</b>): Resume the program with debuging (line-by-line output) until the end of the program or another breakpoint is hit.</li>
+   	<li><b>Set/Remove Breakpoint</b> (<em>line #</em>): Enter the program line number you wish to set a breakpoint on. If the entered line number already has a breakpoint set, the breakpoint will be unset. Setting and unsetting a breakpoint won't resume the program, so you can set or unset as many as you like before continuing.</li>
+   	<li><b>Quit</b> (<b>q</b>): Terminate the current program and end the debugger.</li>
+   </ul>
+</body>
+</html>
