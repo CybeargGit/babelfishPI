@@ -1,11 +1,11 @@
-package edu.dsu.spi;
+package edu.dsu.bpi;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Main {
 
-    private final static String HELP_MESSAGE = "Usage: SuavePI -i \"infile.txt\" [-o \"outfile.dat\"] [-l] [-d] [-b #line]\n\n" +
+    private final static String HELP_MESSAGE = "Usage: BabelfishPI -i \"infile.txt\" [-o \"outfile.dat\"] [-l] [-d] [-b #line]\n\n" +
             "Options:\n" +
             "\t-i \"infile.txt\"\t\tFile to be opened by the interpreter.\n" +
             "\t-o \"outfile.dat\"\tRather than opening the interpreter, clean and output the parsed file.\n" +

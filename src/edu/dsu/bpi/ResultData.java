@@ -1,4 +1,4 @@
-package edu.dsu.spi;
+package edu.dsu.bpi;
 
 public class ResultData {
     private Instruction instruction;

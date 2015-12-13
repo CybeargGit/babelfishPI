@@ -1,4 +1,4 @@
-package edu.dsu.spi;
+package edu.dsu.bpi;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ public class HelpWindow extends JFrame {
     private boolean helpFileLoaded = false;
 
     public HelpWindow() {
-        super("Suave Pseudo-Interpreter Help");
+        super("Babelfish Pseudocode Interpreter Help");
         initialize();
         try {
             readHelpToPane();
@@ -26,7 +26,7 @@ public class HelpWindow extends JFrame {
         this.setMinimumSize(new Dimension(400, 300));
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("pipe_icon.png")));
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
 
         epHelp = new JEditorPane();
         epHelp.setPreferredSize(new Dimension(500, 400));

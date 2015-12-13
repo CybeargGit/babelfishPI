@@ -1,4 +1,4 @@
-package edu.dsu.spi;
+package edu.dsu.bpi;
 
 import javax.swing.*;
 
@@ -37,7 +37,7 @@ public class DebugWindow extends JFrame {
     JLabel lblProgramLabel;
 
 	public DebugWindow() {
-        super("Suave Pseudo-Interpreter");
+        super("Babelfish Pseudocode Interpreter");
 		initialize();
 		this.setVisible(true);
 	}
@@ -48,7 +48,7 @@ public class DebugWindow extends JFrame {
         this.setBounds(100, 100, 552, 413);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("pipe_icon.png")));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
 		//this.setIconImage(new ImageIcon(DebugWindow.class.getResource("/pipe2.png")).getImage());
 		
 		mbMainMenu = new JMenuBar();
@@ -120,7 +120,7 @@ public class DebugWindow extends JFrame {
 		//mnHelp.setEnabled(false);
 		
 		miHelp = new JMenuItem("Help");
-		miHelp.setToolTipText("Learn how to use Suave Pseudo-Interpreter.");
+		miHelp.setToolTipText("Learn how to use Babelfish Pseudocode Interpreter.");
 		miHelp.setMnemonic(KeyEvent.VK_H);
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0, true));
 		mnHelp.add(miHelp);

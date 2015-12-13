@@ -1,4 +1,4 @@
-package edu.dsu.spi;
+package edu.dsu.bpi;
 
 import java.util.Scanner;
 

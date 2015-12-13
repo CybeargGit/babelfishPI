@@ -1,4 +1,4 @@
-package edu.dsu.spi;
+package edu.dsu.bpi;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;

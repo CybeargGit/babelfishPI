@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SuavePI.iml" filepath="$PROJECT_DIR$/SuavePI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BabelfishPI.iml" filepath="$PROJECT_DIR$/BabelfishPI.iml" />
     </modules>
   </component>
 </project>
